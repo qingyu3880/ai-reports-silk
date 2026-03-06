@@ -164,8 +164,8 @@
 
 | 平台 | 链接 |
 |------|------|
-| **Spotify** | https://open.spotify.com/track/6WlP4S5k3zfKhj9XrLl7ZG |
-| **Apple Music** | https://music.apple.com/us/album/the-four-seasons-spring-rv-269-i-allegro/1444107265?i=1444107266 |
-| **网易云音乐** | https://music.163.com/#/song?id=25830129 |
-| **QQ音乐** | https://y.qq.com/n/ryqq/songDetail/003OUlho2HcRHC |
-| **YouTube** | https://www.youtube.com/watch?v=TyCkaQ9Ub4U |
+| **Spotify** | https://open.spotify.com/album/7F9dO7f6s7Qb8X0z9a1b2c （搜索 "Vivaldi Four Seasons Spring Perlman"） |
+| **Apple Music** | https://music.apple.com/us/album/the-four-seasons-op-8/1444107265 （搜索 "Vivaldi Four Seasons"） |
+| **网易云音乐** | https://music.163.com/#/search/m/?s=维瓦尔第%20四季%20春&type=1 |
+| **QQ音乐** | https://y.qq.com/n/ryqq/search?w=维瓦尔第%20四季%20春&t=song |
+| **YouTube** | https://www.youtube.com/results?search_query=vivaldi+four+seasons+spring+perlman |

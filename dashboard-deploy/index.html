@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI日报中心</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", sans-serif;
+            background: #0f0f1a;
+            color: #e8e8e8;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.05);
+            color: #a0a0a0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .nav-btn:hover, .nav-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+        .card-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+        .card-date { font-size: 0.85rem; color: #a0a0a0; margin-bottom: 15px; }
+        .card-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+        }
+        .badge-ai { background: #ff6b6b; }
+        .badge-movie { background: #4ecdc4; color: #0f0f1a; }
+        .badge-music { background: #ffe66d; color: #0f0f1a; }
+        .badge-weekly { background: #a8e6cf; color: #0f0f1a; }
+        .card-summary { color: #a0a0a0; font-size: 0.95rem; margin-bottom: 15px; }
+        .card-link {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        .card-link:hover { background: #667eea; color: white; }
+        .content-view {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.08);
+            display: none;
+        }
+        .content-view.active { display: block; }
+        .content-view a { color: #667eea; }
+        .back-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.05);
+            color: #e8e8e8;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover { background: #667eea; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🤖 AI日报中心</h1>
+        <p>智能日报 · 电影推荐 · 音乐鉴赏 · 行业周报</p>
+    </div>
+    
+    <div class="nav">
+        <button class="nav-btn active" onclick="showSection('daily')">📰 AI日报</button>
+        <button class="nav-btn" onclick="showSection('movies')">🎬 电影</button>
+        <button class="nav-btn" onclick="showSection('music')">🎵 音乐</button>
+        <button class="nav-btn" onclick="showSection('weekly')">📊 周报</button>
+    </div>
+    
+    <div class="container">
+        <div id="daily" class="section">
+            <div class="cards-grid" id="daily-list"></div>
+            <div id="daily-content" class="content-view">
+                <button class="back-btn" onclick="backToList('daily')">← 返回列表</button>
+                <div id="daily-body"></div>
+            </div>
+        </div>
+        
+        <div id="movies" class="section" style="display:none">
+            <div class="cards-grid" id="movies-list"></div>
+            <div id="movies-content" class="content-view">
+                <button class="back-btn" onclick="backToList('movies')">← 返回列表</button>
+                <div id="movies-body"></div>
+            </div>
+        </div>
+        
+        <div id="music" class="section" style="display:none">
+            <div class="cards-grid" id="music-list"></div>
+            <div id="music-content" class="content-view">
+                <button class="back-btn" onclick="backToList('music')">← 返回列表</button>
+                <div id="music-body"></div>
+            </div>
+        </div>
+        
+        <div id="weekly" class="section" style="display:none">
+            <div class="cards-grid" id="weekly-list"></div>
+            <div id="weekly-content" class="content-view">
+                <button class="back-btn" onclick="backToList('weekly')">← 返回列表</button>
+                <div id="weekly-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 示例数据 - 实际使用时从服务器加载
+        const data = {
+            daily: [
+                {
+                    id: '2026-03-03',
+                    title: 'AI日报 | 2026年3月3日',
+                    date: '2026-03-03',
+                    badge: 'AI日报',
+                    badgeClass: 'badge-ai',
+                    summary: 'Anthropic完成300亿美元融资，字节豆包DAU破1亿，OpenAI训练支出达320亿美元...',
+                    links: [
+                        { text: '查看完整日报', url: 'reports/ai-daily-2026-03-03.html' },
+                        { text: '下载Word', url: 'reports/ai-daily-2026-03-03.docx' }
+                    ]
+                }
+            ],
+            movies: [
+                {
+                    id: '2026-03-02',
+                    title: '《安德烈·卢布廖夫》',
+                    date: '2026-03-02',
+                    badge: '电影推荐',
+                    badgeClass: 'badge-movie',
+                    summary: '塔可夫斯基史诗巨作，戛纳金棕榈奖，探讨艺术家使命与信仰考验的哲学电影...',
+                    links: [
+                        { text: '豆瓣', url: 'https://movie.douban.com/subject/1292281/' },
+                        { text: 'IMDb', url: 'https://www.imdb.com/title/tt0060107/' }
+                    ]
+                }
+            ],
+            music: [
+                {
+                    id: '2026-03-02',
+                    title: '贝多芬《月光》第三乐章',
+                    date: '2026-03-02',
+                    badge: '音乐推荐',
+                    badgeClass: 'badge-music',
+                    summary: '升c小调第十四钢琴奏鸣曲，从宁静走向情感风暴的经典之作...',
+                    links: [
+                        { text: '网易云', url: 'https://music.163.com/#/song?id=1297805' },
+                        { text: 'Spotify', url: 'https://open.spotify.com/track/6NdJoWKKqCFhIq7g9WJpGl' }
+                    ]
+                },
+                {
+                    id: '2026-03-03',
+                    title: '巴赫《G弦上的咏叹调》',
+                    date: '2026-03-03',
+                    badge: '音乐推荐',
+                    badgeClass: 'badge-music',
+                    summary: '巴洛克巅峰之作，来自D大调第三管弦乐组曲，威廉密改编版...',
+                    links: [
+                        { text: '网易云', url: 'https://music.163.com/' },
+                        { text: 'QQ音乐', url: 'https://y.qq.com/' }
+                    ]
+                }
+            ],
+            weekly: [
+                {
+                    id: '2026-03-02',
+                    title: '航空业AI转型周报 第1期',
+                    date: '2026-03-02',
+                    badge: '行业周报',
+                    badgeClass: 'badge-weekly',
+                    summary: '美联航预测性维护降本30%，新航AI客服增收280%，达美动态定价增收8%...',
+                    links: [
+                        { text: '查看周报', url: 'reports/airline-ai/airline-ai-weekly-2026-03-02.md' }
+                    ]
+                },
+                {
+                    id: '2026-03-03',
+                    title: '航空业AI转型周报 第2期',
+                    date: '2026-03-03',
+                    badge: '行业周报',
+                    badgeClass: 'badge-weekly',
+                    summary: '卡塔尔航空空中AI工作室，英航数字孪生实现86%准点率，全日空生成式AI全面导入...',
+                    links: [
+                        { text: '查看周报', url: 'reports/airline-ai/weekly-2026-03-03.md' }
+                    ]
+                }
+            ]
+        };
+
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderList(section);
+        }
+
+        function renderList(type) {
+            const container = document.getElementById(type + '-list');
+            const items = data[type] || [];
+            
+            container.innerHTML = items.map(item => `
+                <div class="card" onclick="showContent('${type}', '${item.id}')">
+                    <span class="card-badge ${item.badgeClass}">${item.badge}</span>
+                    <div class="card-title">${item.title}</div>
+                    <div class="card-date">${item.date}</div>
+                    <div class="card-summary">${item.summary}</div>
+                    <div>
+                        ${item.links.map(link => `<a href="${link.url}" class="card-link" target="_blank" onclick="event.stopPropagation()">${link.text}</a>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showContent(type, id) {
+            document.getElementById(type + '-list').style.display = 'none';
+            document.getElementById(type + '-content').classList.add('active');
+            
+            const item = data[type].find(i => i.id === id);
+            document.getElementById(type + '-body').innerHTML = `
+                <h2>${item.title}</h2>
+                <p style="color:#a0a0a0;margin-bottom:20px">${item.date}</p>
+                <div style="line-height:1.8">
+                    <p>完整内容加载中... 实际使用时这里会显示Markdown文件的完整渲染内容</p>
+                    <p>可以通过 fetch API 从服务器加载对应的 .md 或 .html 文件内容</p>
+                </div>
+            `;
+        }
+
+        function backToList(type) {
+            document.getElementById(type + '-list').style.display = 'grid';
+            document.getElementById(type + '-content').classList.remove('active');
+        }
+
+        // 初始化
+        renderList('daily');
+        renderList('movies');
+        renderList('music');
+        renderList('weekly');
+    </script>
+</body>
+</html>
