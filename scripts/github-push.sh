@@ -14,8 +14,8 @@ REPO_DIR="/root/.openclaw/workspace"
 # ==========================================
 # ⚠️ 重要: 请修改下面的仓库地址为你的实际仓库
 # ==========================================
-GITHUB_USER="yourusername"  # 替换为你的 GitHub 用户名
-GITHUB_REPO_NAME="ai-reports"  # 替换为你的仓库名
+GITHUB_USER="ai-reports"  # 替换为你的 GitHub 用户名
+GITHUB_REPO_NAME="ai-reports-silk"  # 替换为你的仓库名
 GITHUB_REPO="github.com/${GITHUB_USER}/${GITHUB_REPO_NAME}.git"
 BRANCH="main"
 TOKEN_FILE="${REPO_DIR}/.github_token"
