@@ -23,7 +23,7 @@
     </div>
     
     <script>
-        let reportsData = { daily: [], weekly: [], books: [], music: [], movies: [], '3d_report': [] };
+        let reportsData = { daily: [], weekly: [], books: [], music: [], movies: [], '3d_report': [], 'custom': [] };
         let currentTab = 'daily';
 
         async function loadData() {
@@ -43,13 +43,13 @@
 
         function render() {
             const app = document.getElementById('app');
-            const total = reportsData.daily.length + reportsData.weekly.length + reportsData['3d_report'].length + 
+            const total = reportsData.daily.length + reportsData.weekly.length + reportsData['custom'].length + 
                          reportsData.books.length + reportsData.music.length + reportsData.movies.length;
             
             const tabs = [
                 { id: 'daily', name: '📰 AI日报', count: reportsData.daily.length },
                 { id: 'weekly', name: '✈️ 航空周报', count: reportsData.weekly.length },
-                { id: '3d_report', name: '🎯 三维认知', count: reportsData['3d_report'].length },
+                { id: 'custom', name: '🎯 定制日报', count: reportsData['custom'].length },
                 { id: 'books', name: '📚 图书推荐', count: reportsData.books.length },
                 { id: 'music', name: '🎵 音乐推荐', count: reportsData.music.length },
                 { id: 'movies', name: '🎬 电影推荐', count: reportsData.movies.length },
@@ -77,8 +77,8 @@
                             <div class="text-gray-500 mt-1 text-sm">AI日报</div>
                         </div>
                         <div class="bg-white rounded-2xl shadow-md p-6 border-l-4 border-indigo-500">
-                            <div class="text-3xl font-bold text-gray-800">${reportsData['3d_report'].length}</div>
-                            <div class="text-gray-500 mt-1 text-sm">三维认知</div>
+                            <div class="text-3xl font-bold text-gray-800">${reportsData['custom'].length}</div>
+                            <div class="text-gray-500 mt-1 text-sm">定制日报</div>
                         </div>
                         <div class="bg-white rounded-2xl shadow-md p-6 border-l-4 border-purple-500">
                             <div class="text-3xl font-bold text-gray-800">${reportsData.books.length}</div>
@@ -154,7 +154,7 @@
 
         function showDetail(id) {
             let item = null;
-            for (const category of ['daily', 'weekly', '3d_report', 'books', 'music', 'movies']) {
+            for (const category of ['daily', 'weekly', 'custom', 'books', 'music', 'movies']) {
                 item = reportsData[category].find(r => r.id === id);
                 if (item) break;
             }

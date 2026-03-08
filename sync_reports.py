@@ -56,7 +56,9 @@ def collect_reports():
         'weekly': [],
         'books': [],
         'music': [],
-        'movies': []
+        'movies': [],
+        '3d_report': [],
+        'custom': []
     }
     
     # 收集AI日报
@@ -69,6 +71,26 @@ def collect_reports():
                 if report:
                     report['category'] = 'AI'
                     reports['daily'].append(report)
+    
+    # 收集三维认知报告
+    if os.path.exists(ai_dir):
+        for f in sorted(os.listdir(ai_dir), reverse=True):
+            if f.startswith('daily-3d-report-') and f.endswith('.md'):
+                filepath = os.path.join(ai_dir, f)
+                report = parse_markdown_file(filepath)
+                if report:
+                    report['category'] = '三维报告'
+                    reports['3d_report'].append(report)
+    
+    # 收集定制日报
+    if os.path.exists(ai_dir):
+        for f in sorted(os.listdir(ai_dir), reverse=True):
+            if f.startswith('daily-custom-') and f.endswith('.md'):
+                filepath = os.path.join(ai_dir, f)
+                report = parse_markdown_file(filepath)
+                if report:
+                    report['category'] = '定制日报'
+                    reports['custom'].append(report)
     
     # 收集航空周报
     airline_dir = os.path.join(REPORTS_DIR, 'airline-ai')
@@ -121,6 +143,8 @@ def generate_reports_json(reports):
         'books': [{'id': r['id'], 'title': r['title'], 'date': r['date'], 'category': r['category'], 'summary': r['summary'], 'content': r['content']} for r in reports['books']],
         'music': [{'id': r['id'], 'title': r['title'], 'date': r['date'], 'category': r['category'], 'summary': r['summary'], 'content': r['content']} for r in reports['music']],
         'movies': [{'id': r['id'], 'title': r['title'], 'date': r['date'], 'category': r['category'], 'summary': r['summary'], 'content': r['content']} for r in reports['movies']],
+        '3d_report': [{'id': r['id'], 'title': r['title'], 'date': r['date'], 'category': r['category'], 'summary': r['summary'], 'content': r['content']} for r in reports['3d_report']],
+        'custom': [{'id': r['id'], 'title': r['title'], 'date': r['date'], 'category': r['category'], 'summary': r['summary'], 'content': r['content']} for r in reports['custom']],
         'lastUpdated': datetime.now().isoformat()
     }
     return json_data
@@ -145,6 +169,8 @@ def sync_to_vercel():
         print(f"   - 图书: {len(reports['books'])} 篇")
         print(f"   - 音乐: {len(reports['music'])} 篇")
         print(f"   - 电影: {len(reports['movies'])} 篇")
+        print(f"   - 三维报告: {len(reports['3d_report'])} 篇")
+        print(f"   - 定制日报: {len(reports['custom'])} 篇")
         
         # 这里可以添加Git提交和推送命令
         # 如果需要自动部署到Vercel
