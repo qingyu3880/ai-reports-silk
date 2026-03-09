@@ -1,0 +1,73 @@
+{
+  "timestamp": "2026-03-07T09:35:00+08:00",
+  "total_target": 48,
+  "installed_system": 15,
+  "installed_custom": 4,
+  "pending_clawhub": 29,
+  "status": "部分完成 - ClawHub速率限制中",
+  "details": {
+    "system_skills_available": [
+      {"name": "weather", "source": "system", "status": "✅ 已安装可用", "tested": true},
+      {"name": "github", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "canvas", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "coding-agent", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "summarize", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "openai-image-gen", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "sherpa-onnx-tts", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "openai-whisper", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "nano-pdf", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "healthcheck", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "blogwatcher", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "notion", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "slack", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "tmux", "source": "system", "status": "✅ 已安装可用", "tested": false},
+      {"name": "clawhub", "source": "system", "status": "✅ 已安装可用", "tested": false}
+    ],
+    "custom_skills_installed": [
+      {"name": "auto-content-publish", "source": "custom", "status": "✅ 已安装", "scripts": 1},
+      {"name": "daily-ai-brief", "source": "custom", "status": "✅ 已安装", "scripts": 3},
+      {"name": "memory-system", "source": "custom", "status": "✅ 已安装", "scripts": 4},
+      {"name": "tavily-search", "source": "custom", "status": "📝 框架创建", "scripts": 0}
+    ],
+    "pending_install": [
+      "email-manager",
+      "feishu-doc",
+      "browser-control",
+      "stock-monitor",
+      "wechat-mp",
+      "xiaohongshu",
+      "twitter-x",
+      "train-ticket",
+      "flight",
+      "deep-research",
+      "competitor-research",
+      "hot-trends",
+      "hacker-news",
+      "project-mgmt",
+      "automation-workflow",
+      "security-audit",
+      "stock-analysis",
+      "hk-stock-research",
+      "voice-clone",
+      "text-humanize",
+      "seo-writer",
+      "report-gen",
+      "video-summarize",
+      "web-extract",
+      "feishu-card",
+      "calendar",
+      "capability-evolver",
+      "skill-vetter",
+      "find-skills",
+      "task-status"
+    ]
+  },
+  "blockers": [
+    "ClawHub API 速率限制 - 需要等待恢复"
+  ],
+  "next_steps": [
+    "等待ClawHub速率限制恢复后继续安装",
+    "或自建脚本实现缺失功能",
+    "优先安装：email-manager, stock-monitor, browser-control"
+  ]
+}

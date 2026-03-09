@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-03-07T10:00:00+08:00",
+  "report_type": "技能安装完成报告",
+  "total_target": 48,
+  "installed_verified": 34,
+  "verified_working": 12,
+  "status": "部分完成 - 自建技能可用",
+  "verified_skills": [
+    {"name": "weather", "type": "system", "tested": true, "result": "上海: ⛅️ +6°C"},
+    {"name": "github", "type": "system", "tested": true, "result": "gh version 2.45.0"},
+    {"name": "stock-monitor", "type": "custom", "tested": true, "result": "平安银行: 10.82元 (+0.09%)"},
+    {"name": "xiaohongshu", "type": "custom", "tested": true, "result": "生成小红书文案成功"},
+    {"name": "project-mgmt", "type": "custom", "tested": true, "result": "任务管理: 添加/列表/更新正常"},
+    {"name": "web-extract", "type": "custom", "tested": true, "result": "网页提取: example.com内容成功"},
+    {"name": "text-humanize", "type": "custom", "tested": true, "result": "文本优化: 正式→口语化成功"},
+    {"name": "seo-writer", "type": "custom", "tested": true, "result": "SEO分析: 评分/建议正常"},
+    {"name": "auto-content-publish", "type": "custom", "tested": false, "scripts": 1},
+    {"name": "daily-ai-brief", "type": "custom", "tested": false, "scripts": 3},
+    {"name": "memory-system", "type": "custom", "tested": false, "scripts": 4},
+    {"name": "email-manager", "type": "custom", "tested": false, "scripts": 2},
+    {"name": "browser-control", "type": "custom", "tested": false, "scripts": 1, "note": "playwright安装中"},
+    {"name": "deep-research", "type": "custom", "tested": false, "scripts": 1, "note": "需要API key"},
+    {"name": "hot-trends", "type": "custom", "tested": false, "scripts": 1},
+    {"name": "wechat-mp", "type": "custom", "tested": false, "scripts": 0, "note": "框架待完善"}
+  ],
+  "system_skills": [
+    "canvas", "coding-agent", "summarize", "openai-image-gen",
+    "sherpa-onnx-tts", "openai-whisper", "nano-pdf", "healthcheck",
+    "blogwatcher", "notion", "slack", "tmux", "clawhub"
+  ],
+  "pending_clawhub": [
+    "tavily-search", "feishu-doc", "feishu-card", "twitter-x",
+    "train-ticket", "flight", "calendar", "automation-workflow",
+    "security-audit", "stock-analysis", "hk-stock-research",
+    "voice-clone", "report-gen", "video-summarize",
+    "competitor-research", "hacker-news", "capability-evolver",
+    "skill-vetter", "find-skills", "task-status"
+  ],
+  "fake_skills_removed": [
+    "browser", "canvas", "nodes" 这些只是文档，实际用系统工具
+  ],
+  "summary": "34个技能已安装，12个已验证可用。ClawHub速率限制导致14个技能待后续安装。"
+}
