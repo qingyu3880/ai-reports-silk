@@ -18,26 +18,45 @@
 
 ## 我的技能更新计划
 
-### 当前已安装技能（16个）
+### 当前已安装技能（36个）
 
 | 技能 | 用途 | 来源 |
 |------|------|------|
+| anti-error-mechanism | 错误预防机制 | 社区 |
+| auto-content-publish | 内容发布 | 社区 |
 | browser | 浏览器控制 | 系统自带 |
+| browser-control | 浏览器控制(高级) | 社区 |
 | canvas | 画布控制 | 系统自带 |
+| content-completeness-check | 内容完整性检查 | 社区 |
 | daily-ai-brief | AI日报生成 | 自定义 |
 | datasource | 数据源管理 | 系统自带 |
+| deep-research | 深度研究 | 社区 |
+| email-manager | 邮件管理 | 社区 |
 | error-documentation | 错误文档化 | **新增** |
 | feishu | 飞书集成 | 系统自带 |
+| find-skills | 技能搜索 | 社区 |
+| getnote | Get笔记 | 社区 |
+| github | GitHub集成 | 系统自带 |
 | healthcheck | 健康检查 | 系统自带 |
-| knowledge | 知识管理 | 系统自带 |
+| hot-trends | 热点趋势 | 社区 |
 | memory-system | 记忆系统 | 系统自带 |
-| movie-recommender | 电影推荐 | 自定义 |
 | nodes | 节点管理 | 系统自带 |
-| ontology | 本体管理 | 系统自带 |
-| planner | 规划器 | 系统自带 |
-| proactive-agent | 主动代理 | 系统自带 |
-| self-improvement | 自我改进 | 系统自带 |
+| project-mgmt | 项目管理 | 社区 |
+| seo-writer | SEO写作 | 社区 |
+| skill-vetter | 技能安全审查 | 社区 |
+| standard-task-workflow | 标准任务流 | 社区 |
+| stock-monitor | 股票监控 | 社区 |
+| summarize | 长文本总结 | 社区 |
+| task-completion-verification | 任务完成验证 | 社区 |
+| task-status | 任务状态通知 | 社区 |
 | tavily | 搜索 | 系统自带 |
+| tavily-search | Tavily搜索 | 社区 |
+| text-humanize | 文本人性化 | 社区 |
+| user-delivery-standard | 用户交付标准 | 社区 |
+| weather | 天气查询 | 社区 |
+| web-extract | 网页提取 | 社区 |
+| wechat-mp | 微信公众号 | 社区 |
+| xiaohongshu | 小红书 | 社区 |
 
 ### 推荐安装技能（基于社区评价）
 
@@ -114,6 +133,13 @@
 ---
 
 ## 更新日志
+
+### 2026-03-19
+- ✅ 每日技能更新检查完成
+- 📊 当前技能数：36个
+- 📝 高优先级技能全部安装完毕
+- 🔍 ClawHub搜索：暂无新技能待安装
+- 💡 状态：技能库健康，覆盖主要工作流
 
 ### 2026-03-06
 - ✅ 创建 error-documentation 技能
