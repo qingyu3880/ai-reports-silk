@@ -1,0 +1,18 @@
+{
+  "lastCheck": "2026-03-21T14:00:00+08:00",
+  "failures": {
+    "music": {
+      "date": "2026-03-21",
+      "scheduledTime": "08:30",
+      "consecutiveFailures": 1,
+      "status": "missing_file"
+    },
+    "ai-daily": {
+      "date": "2026-03-21",
+      "scheduledTime": "09:30",
+      "consecutiveFailures": 1,
+      "status": "missing_file"
+    }
+  },
+  "notes": "静默记录：等待主任务下次定时重试"
+}
